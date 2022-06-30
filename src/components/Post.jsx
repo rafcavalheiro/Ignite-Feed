@@ -1,3 +1,4 @@
+import { Hand, HandPointing } from "phosphor-react"
 import styles from "./Post.module.css"
 
 export function Post(){
@@ -14,9 +15,9 @@ export function Post(){
                 <time title="30 de junho as 11:15h" dateTime="2022-06-30 11:15:30">Publicado há 1 hora</time>
             </header>
             <div className={styles.content}>
-                <p>Bom dia</p>
-                <p>Acabei de postar novo conteúdo na plataforma</p>
-                <p> <a href=""> --> Ignite Feed</a> </p>
+                <p> <Hand/> Bom dia </p>
+                <p>Acabei de postar novo conteúdo na plataforma </p>
+                <p> <a href=""> Ignite Feed</a> </p>
                 <p> <a href="">#nlw #novoprojeto #dev </a> </p>
             </div>
         </article>
