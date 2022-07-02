@@ -1,4 +1,5 @@
 import { ArrowDown, Hand, HandPointing } from "phosphor-react"
+import { Avatar } from "./Avatar"
 import { Comment } from "./Comment"
 import styles from "./Post.module.css"
 
@@ -8,7 +9,7 @@ export function Post(){
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                <img className={styles.avatar} src="https://github.com/rafcavalheiro.png"/>
+                <Avatar hasBorder src="https://github.com/maykbrito.png" />
                     <div className={styles.authorInfo}>
                         <strong>Rafael Cavalheiro</strong>
                         <span>Front-End Developer</span>
