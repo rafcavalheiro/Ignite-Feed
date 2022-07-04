@@ -4,14 +4,15 @@ import { Comment } from "./Comment"
 import styles from "./Post.module.css"
 
 
-export function Post(){
+export function Post(props){
+    console.log(props)
     return(
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                <Avatar hasBorder src="https://github.com/maykbrito.png" />
+                <Avatar hasBorder src="https://cdn.pixabay.com/photo/2018/03/30/02/30/color-dogs-3274248_960_720.png" />
                     <div className={styles.authorInfo}>
-                        <strong>Rafael Cavalheiro</strong>
+                        <strong>Trillian Leia</strong>
                         <span>Front-End Developer</span>
                     </div>                
                 </div>

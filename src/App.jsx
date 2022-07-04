@@ -6,6 +6,39 @@ import styles from "./App.module.css"
 
 import './global.css'
 
+const posts = [
+  {
+  id: 1,
+  author: {
+    avatarUrl: 'https://github.com/rafcavalheiro.png',
+    name: 'Rafael Cavalheiro',
+    role: 'Front End Developer'
+  },
+  content: [
+    {type: 'paragraph', content: 'Bom dia'},
+    {type: 'paragraph', content: 'Postei novo conteúdo'},
+    {type: 'link', content: 'plataformadeensino'},
+  ],
+  publishedAt: new Date('2022-07-04 20:00:00'),
+},
+
+{
+  id: 2,
+  author: {
+    avatarUrl: 'https://cdn.pixabay.com/photo/2018/03/30/02/30/color-dogs-3274248_960_720.png',
+    name: 'Trillian Leia',
+    role: 'Front End Developer Jr'
+  },
+  content: [
+    {type: 'paragraph', content: 'Bom dia'},
+    {type: 'paragraph', content: 'Postei novo conteúdo'},
+    {type: 'link', content: 'petcare'},
+  ],
+  publishedAt: new Date('2022-07-04 21:00:00'),
+},
+
+];
+
 
 export function App() {  
 
@@ -18,15 +51,15 @@ export function App() {
       <Sidebar/>
 
       <main>
-      <Post 
-      author="Rafael Cavalheiro" 
-      content=" Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente debitis deleniti rerum libero distinctio similique quisquam inventore hic, earum nihil labore excepturi maiores mollitia reiciendis quae quaerat modi error beatae."
-      />
-
-      <Post 
-      author="Rafael Cavalheiro" 
-      content=" Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente debitis deleniti rerum libero distinctio similique quisquam inventore hic, earum nihil labore excepturi maiores mollitia reiciendis quae quaerat modi error beatae."
-      />
+        {posts.map(post => {
+          return (
+            <Post 
+              author = {post.author}
+              content = {post.content}
+              publishedAt = {post.publishedAt}
+            />
+          )
+        })}
       </main>
       </div>      
   
