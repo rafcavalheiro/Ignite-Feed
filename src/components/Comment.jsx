@@ -2,7 +2,7 @@ import { HandsClapping, ThumbsUp, Trash } from 'phosphor-react'
 import { Avatar } from './Avatar'
 import styles from './Comment.module.css'
 
-export function Comment(){
+export function Comment({content}){
     return(
         <div className={styles.comment}>
             <Avatar hasBorder={false} src="https://github.com/rafcavalheiro.png"/>
@@ -12,7 +12,7 @@ export function Comment(){
                     <header>
                         <div className={styles.authorAndTime}>
                             <strong>Rafael Cavalheiro</strong>
-                            <time>Cerca de 1 hora atrás</time>
+                            <time title="05 de Julho ás 23:30" dateTime="2022-07-04 23:30:30">Cerca de 1 hora atrás</time>
                         </div>
 
                         <button title="Deletar comentário">
@@ -20,7 +20,7 @@ export function Comment(){
                         </button>
                     </header>
 
-                    <p>Muito bom! Parabéns <HandsClapping/> </p>
+                    <p>{content} <HandsClapping/></p>
                 </div>
 
                 <footer>
