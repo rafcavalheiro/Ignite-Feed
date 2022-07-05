@@ -1,28 +1,45 @@
-import { ArrowDown, Hand, HandPointing } from "phosphor-react"
 import { Avatar } from "./Avatar"
 import { Comment } from "./Comment"
+import {format, formatDistanceToNow} from 'date-fns'
+import ptBR from "date-fns/locale/pt-BR"
+
 import styles from "./Post.module.css"
+import { Hand } from "phosphor-react"
 
 
-export function Post(props){
-    console.log(props)
+export function Post({author, publishedAt, content}){
+   const publisheDateFormatted = format(publishedAt, "d 'de' LLLL 'ás' HH:mm'h'", {
+    locale: ptBR,
+   })
+
+   const publisheDateRelativeNow = formatDistanceToNow(publishedAt,{
+    locale: ptBR,
+    addSuffix: true,
+   })
+
     return(
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                <Avatar hasBorder src="https://cdn.pixabay.com/photo/2018/03/30/02/30/color-dogs-3274248_960_720.png" />
+                <Avatar hasBorder src={author.avatarUrl} />
                     <div className={styles.authorInfo}>
-                        <strong>Trillian Leia</strong>
-                        <span>Front-End Developer</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>                
                 </div>
-                <time title="30 de junho as 11:15h" dateTime="2022-06-30 11:15:30">Publicado há 1 hora</time>
+                <time title= {publisheDateFormatted} dateTime={publishedAt.toISOString()}>
+                   {publisheDateRelativeNow}
+                </time>
             </header>
+
             <div className={styles.content}>
-                <p>Bom dia  <Hand/>  </p>
-                <p>Acabei de postar novo conteúdo na plataforma <ArrowDown/> </p>
-                <p> <a href=""> Ignite Feed</a> </p>
-                <p> <a href="">#nlw #novoprojeto #dev </a> </p>
+                {content.map(line => {
+                    if (line.type == 'paragraph') {
+                        return <p>{line.content} <Hand/></p>;
+                    } else if (line.type == 'link') {
+                        return <p><a href="#">{line.content}</a></p>;
+                    }
+                })}
             </div>
             
             <form className={styles.commentForm}>
